@@ -45,14 +45,44 @@ class KnightPathFinder
       end
     end
     
+
     def find_path(final_pos)
+        final_node = @root_node.bfs(final_pos)
+        trace_path_back(final_node).reverse
     end
+
+    # def trace_non_rec(node)
+    #     path = []
+    #     until node.parent == nil
+    #         path << node.value
+    #         node = node.parent
+    #     end
+    #     path << node.value
+    #     path
+    # end
+
+    def trace_path_back(node)
+        return [node.value] if node.parent.nil?
+        trace = [node.value]
+        trace += trace_path_back(node.parent)
+    end
+
+
 end
+
 
 kpf = KnightPathFinder.new([0, 0])
 kpf.build_move_tree
-p kpf.considered_positions
-p kpf.considered_positions.length
+p kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
+p kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
+
+# kpf = KnightPathFinder.new([0, 0])
+# kpf.build_move_tree
+# p kpf.find_path([5, 3]).value
+# p kpf.trace_non_rec(kpf.find_path([7, 7]))
+# p kpf.trace_path_back(kpf.find_path([7, 7]))
+# p kpf.considered_positions
+# p kpf.considered_positions.length
 # p kpf.possible_moves([0,0])
 # p KnightPathFinder.valid_moves([3,7])
 # board = Array.new(8) { Array.new(8, "[ ]") }
