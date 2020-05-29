@@ -1,6 +1,8 @@
 require "../polytree_project/lib/00_tree_node.rb"
 
 class KnightPathFinder
+    
+    attr_reader :considered_positions
 
     def self.valid_moves(pos)
         moves = self.possible_moves(pos)
@@ -30,18 +32,29 @@ class KnightPathFinder
         new_moves
     end
 
+
     def build_move_tree
+      queue = [@root_node]
+      until queue.empty?
+        curr_node = queue.shift
+        moves = self.new_move_positions(curr_node.value)
+        moves.each do |move|
+          curr_node.add_child(PolyTreeNode.new(move))
+        end
+        queue += curr_node.children
+      end
     end
     
     def find_path(final_pos)
     end
 end
 
-
 kpf = KnightPathFinder.new([0, 0])
+kpf.build_move_tree
+p kpf.considered_positions
+p kpf.considered_positions.length
 # p kpf.possible_moves([0,0])
-p KnightPathFinder.valid_moves([3,7])
-
+# p KnightPathFinder.valid_moves([3,7])
 # board = Array.new(8) { Array.new(8, "[ ]") }
 # board.each { |row| p row.join(" "); puts }
 # (0..7).each { |i| print "#{i} "}
