@@ -48,7 +48,7 @@ class TicTacToeNode
       return true if @board.winner == evaluator
     end
 
-    if evaluator != @next_mover_mark
+    if evaluator == @next_mover_mark
       self.children.any? { |child| child.winning_node?(evaluator) }
     else
       self.children.all? { |child| child.winning_node?(evaluator) }
