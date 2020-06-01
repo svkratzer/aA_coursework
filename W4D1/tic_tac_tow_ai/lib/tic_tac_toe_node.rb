@@ -26,21 +26,37 @@ class TicTacToeNode
     children
   end
 
+
+  require "byebug"
   def losing_node?(evaluator)
-    unless @board.winner == evaluator
-
-
-
+    if @board.over?
+      return false if @board.tied? || @board.winner == evaluator
+      return true if @board.winner != evaluator
     end
+
+    if evaluator != @next_mover_mark
+      self.children.any? { |child| child.losing_node?(evaluator) }
+    else
+      self.children.all? { |child| child.losing_node?(evaluator) }
+    end
+    
   end
 
   def winning_node?(evaluator)
+    if @board.over?
+      return false if @board.tied? || @board.winner != evaluator
+      return true if @board.winner == evaluator
+    end
 
+    if evaluator != @next_mover_mark
+      self.children.any? { |child| child.winning_node?(evaluator) }
+    else
+      self.children.all? { |child| child.winning_node?(evaluator) }
+    end
   end
-
-  # # This method generates an array of all moves that can be made after
-  # # the current move.
-  # def children
-  # end
 end
+
+# [X] [ ] [ ]
+# [ ] [ ] [ ]
+# [ ] [ ] [ ]
 
