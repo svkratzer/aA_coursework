@@ -205,10 +205,15 @@ class ComputerPlayer
   end
 end
 
-if __FILE__ == $PROGRAM_NAME
-  puts "Play the dumb computer!"
-  hp = HumanPlayer.new("Ned")
-  cp = ComputerPlayer.new
+# if __FILE__ == $PROGRAM_NAME
+#   puts "Play the dumb computer!"
+#   hp = HumanPlayer.new("Amin")
+#   cp = ComputerPlayer.new
 
-  TicTacToe.new(hp, cp).run
-end
+#   TicTacToe.new(hp, cp).run
+# end
+
+p "aaa"
+ttt = TicTacToe.new("Amin", "Sam")
+
+p ttt.board.rows
