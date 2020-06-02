@@ -28,7 +28,7 @@ class Board
 
       elsif self.grid[start_row][start_col].is_a?(Piece) # Tests if pos has a piece
         piece = self.grid[start_row][start_col] # Saves piece as reference pointing to Piece instance
-        self.grid[start_row][start_col] = NullPiece.new # Replaces start_pos with NullPiece (no more piece)
+        self.grid[start_row][start_col] = NullPiece.instance # Replaces start_pos with NullPiece (no more piece)
         self.grid[end_row][end_col] = piece # Places piece on the desired end_pos  
 
       else
@@ -46,9 +46,10 @@ class Board
       self.grid[0..1].each do |row|
         row.each_with_index { |pos, i| row[i] = Piece.new}
       end
-      #Fills the middle with NullPieces
+      #Fills the middle with instances of NullPiece
+      null = NullPiece.instance
       self.grid[2..5].each do |row|
-        row.each_with_index { |pos, i| row[i] = NullPiece.new}
+        row.each_with_index { |pos, i| row[i] = null}
       end
       #Fills the second players side with Pieces
       self.grid[6..7].each do |row|
