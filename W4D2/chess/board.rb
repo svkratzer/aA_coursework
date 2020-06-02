@@ -9,6 +9,22 @@ class Board
     end 
     
     def move_piece(start_pos, end_pos)
+      start_row, start_col = start_pos
+      end_row, end_col = end_pos
+
+      # IF THERE IS A PIECE
+      if !end_row.between?(0,7) || !end_col.between?(0,7) || !start_row.between?(0,7) || !start_col.between?(0,7)
+        raise ArgumentError.new "Start or end position beyond the bounds of the board"
+
+      elsif self.grid[start_row][start_col].is_a?(Piece) # Tests if pos has a piece
+        piece = self.grid[start_row][start_col] # Saves piece as reference pointing to Piece instance
+        self.grid[start_row][start_col] = NullPiece.new # Replaces start_pos with NullPiece (no more piece)
+        self.grid[end_row][end_col] = piece # Places piece on the desired end_pos  
+
+      else
+        # Raises error if the start_pos does not contain Piece
+        raise ArgumentError.new "Start position does not contain a piece"
+      end      
       
     end    
 
@@ -34,6 +50,9 @@ end
 
 board = Board.new
 board.grid.each { |row| p row }
+puts 
+board.move_piece([8,3], [4,5])
+board.grid.each { |row| p row }
 
 # Sliding pieces (Bishop/Rook/Queen)
 # Stepping pieces (Knight/King)
@@ -49,3 +68,4 @@ board.grid.each { |row| p row }
 # 5 [nil, nil, nil, nil, nil, nil, nil, nil]
 # 6 [nil, nil, nil, nil, nil, nil, nil, nil]
 # 7 [nil, nil, nil, nil, nil, nil, nil, nil]
+
