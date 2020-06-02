@@ -4,10 +4,20 @@ require_relative "null_piece"
 class Board
     attr_reader :grid
     def initialize
-    @grid = Array.new(8) {Array.new(8)}
-    fill_grid
+    @grid = Array.new(8) {Array.new(8)} # creates grid skeleton
+    fill_grid # populates board
     end 
     
+    def [](position)
+      row, col = position
+      @grid[row][col]
+    end  
+    
+    def []=(position, piece)
+      row, col = position
+      @grid[row][col] = piece
+    end  
+
     def move_piece(start_pos, end_pos)
       start_row, start_col = start_pos
       end_row, end_col = end_pos
@@ -48,11 +58,17 @@ class Board
 
 end    
 
+
+if __FILE__ == $PROGRAM_NAME
+
 board = Board.new
 board.grid.each { |row| p row }
 puts 
-board.move_piece([8,3], [4,5])
+board.move_piece([1,1], [4,5])
 board.grid.each { |row| p row }
+puts
+p board[[1,1]]
+
 
 # Sliding pieces (Bishop/Rook/Queen)
 # Stepping pieces (Knight/King)
@@ -69,3 +85,4 @@ board.grid.each { |row| p row }
 # 6 [nil, nil, nil, nil, nil, nil, nil, nil]
 # 7 [nil, nil, nil, nil, nil, nil, nil, nil]
 
+end
