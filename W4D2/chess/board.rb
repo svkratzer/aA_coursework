@@ -1,6 +1,7 @@
+require_relative "piece"
+require_relative "null_piece"
+
 class Board
-    require_relative 'piece.rb'
-    require_relative 'null_piece.rb'
     attr_reader :grid
     def initialize
     @grid = Array.new(8) {Array.new(8)}
@@ -11,30 +12,28 @@ class Board
       
     end    
 
-    # private
+    private
 
     # Fills the grid with Pieces
     def fill_grid
       # Fills the first players side with Pieces
       self.grid[0..1].each do |row|
-        row.each { |pos| pos = Piece.new}
+        row.each_with_index { |pos, i| row[i] = Piece.new}
       end
       #Fills the middle with NullPieces
       self.grid[2..5].each do |row|
-        row.each { |pos| pos = NullPiece.new}
+        row.each_with_index { |pos, i| row[i] = NullPiece.new}
       end
       #Fills the second players side with Pieces
       self.grid[6..7].each do |row|
-        row.each { |pos| pos = Piece.new}
+        row.each_with_index { |pos, i| row[i] = Piece.new}
       end           
     end    
 
 end    
 
 board = Board.new
-board.fill_grid
 board.grid.each { |row| p row }
-
 
 # Sliding pieces (Bishop/Rook/Queen)
 # Stepping pieces (Knight/King)
