@@ -1,5 +1,7 @@
 require 'singleton'
-class NullPiece
+require_relative 'piece'
+
+class NullPiece < Piece
   include Singleton
   
   def initialize
