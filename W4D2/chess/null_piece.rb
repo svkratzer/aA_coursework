@@ -9,6 +9,6 @@ class NullPiece < Piece
   
   # Overwrites what we see when printing NullPieces
   def inspect
-    :N
+    :_
   end    
 end    

@@ -68,7 +68,7 @@ puts
 board.move_piece([1,1], [4,5])
 board.grid.each { |row| p row }
 puts
-p board[[1,1]]
+
 
 
 # Sliding pieces (Bishop/Rook/Queen)

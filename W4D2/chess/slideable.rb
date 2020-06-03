@@ -1,4 +1,5 @@
 require_relative "board"
+require_relative "piece"
 require 'byebug'
 module Slideable
 
@@ -46,18 +47,46 @@ module Slideable
   def moves_by_dirs(start_pos, direction)
     moves = [start_pos]
     direction.each do |step|
+
       until moves.last.any? {|index| !index.between?(0,7) }
         new_move = moves.last.dup
         new_move[0] += step[0]
         new_move[1] += step[1]
-        moves << new_move
+
+        # IF THE POSITION CONTAINS ONE OF OUR PIECES
+        if grid[new_move[0]][new_move[1]].color == self.color && grid[new_move[0]][new_move[1]].is_a?(Piece)
+          break
+        # IF THE POSITION CONTAINS ONE OF OUR OPPONENTS PIECES
+        elsif grid[new_move[0]][new_move[1]].color != self.color && grid[new_move[0]][new_move[1]].is_a?(Piece)
+          moves << new_move
+          break
+        # IF THE POSITION CONTAINS A NULLPIECE (EMPTY SPACE)
+        else
+          moves << new_move  
+        end
+        
       end
-      moves.pop
+
+      moves.pop if moves.last.any? { |index| !index.between?(0,7) }
       moves << start_pos
     end
     moves.uniq
   end  
 
+  # def moves_by_dirs(start_pos, direction)
+  #   moves = [start_pos]
+  #   direction.each do |step|
+  #     until moves.last.any? {|index| !index.between?(0,7) }
+  #       new_move = moves.last.dup
+  #       new_move[0] += step[0]
+  #       new_move[1] += step[1]
+  #       moves << new_move
+  #     end
+  #     moves.pop
+  #     moves << start_pos
+  #   end
+  #   moves.uniq
+  # end  
 
 end
 
@@ -66,14 +95,12 @@ end
 
 if __FILE__ == $PROGRAM_NAME
 
-  class Test
-    include Slideable
-    def initialize; end
-  end
-
-  test = Test.new 
-  p test.horizontal_dirs([3,3])
-  p test.diagonal_dirs([3,3])
+  board = Board.new
+  board.grid.each { |row| p row }
+  puts 
+ 
+  puts board.grid[0][0].horizontal_dirs([0,0])
+  
 end
 
 
