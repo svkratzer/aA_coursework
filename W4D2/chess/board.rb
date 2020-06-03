@@ -44,7 +44,7 @@ class Board
     def fill_grid
       # Fills the first players side with Pieces
       self.grid[0..1].each do |row|
-        row.each_with_index { |pos, i| row[i] = Piece.new}
+        row.each_with_index { |pos, i| row[i] = Piece.new(:W)}
       end
       #Fills the middle with instances of NullPiece
       null = NullPiece.instance
@@ -53,7 +53,7 @@ class Board
       end
       #Fills the second players side with Pieces
       self.grid[6..7].each do |row|
-        row.each_with_index { |pos, i| row[i] = Piece.new}
+        row.each_with_index { |pos, i| row[i] = Piece.new(:B)}
       end           
     end    
 
