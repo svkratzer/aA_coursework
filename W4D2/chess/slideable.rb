@@ -53,10 +53,10 @@ module Slideable
         new_move[1] += step[1]
 
         # IF THE POSITION CONTAINS ONE OF OUR PIECES
-        if board.grid[new_move[0]][new_move[1]].color == self.color && board.grid[new_move[0]][new_move[1]].is_a?(Piece)
+        if board.grid[new_move[0]][new_move[1]].color == self.color && !board.grid[new_move[0]][new_move[1]].is_a?(NullPiece)
             break
         # IF THE POSITION CONTAINS ONE OF OUR OPPONENTS PIECES
-        elsif board.grid[new_move[0]][new_move[1]].color != self.color && board.grid[new_move[0]][new_move[1]].is_a?(Piece)
+        elsif board.grid[new_move[0]][new_move[1]].color != self.color && !board.grid[new_move[0]][new_move[1]].is_a?(NullPiece)
             moves << new_move
             break
         # IF THE POSITION CONTAINS A NULLPIECE (EMPTY SPACE)
@@ -97,7 +97,7 @@ if __FILE__ == $PROGRAM_NAME
   board.grid.each { |row| p row }
   puts 
   # puts board.grid[0][0]
-  p board.grid[0][1].horizontal_dirs([1,0])
+  p board.grid[6][6].horizontal_dirs([6,6])
   
 end
 
