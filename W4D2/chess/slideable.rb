@@ -18,7 +18,7 @@ module Slideable
   [1, 1]  #down + right
 ].freeze 
 
-  def slide_move(start_pos, end_pos)
+  def moves(start_pos)
     start_row, start_col = start_pos
     end_row, end_col = end_pos
 
@@ -37,6 +37,7 @@ module Slideable
   end  
 
 end
+
 
 
 
