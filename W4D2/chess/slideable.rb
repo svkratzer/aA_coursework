@@ -97,7 +97,7 @@ if __FILE__ == $PROGRAM_NAME
   board.grid.each { |row| p row }
   puts 
   # puts board.grid[0][0]
-  p board.grid[0][0].horizontal_dirs([0,0])
+  p board.grid[0][1].horizontal_dirs([1,0])
   
 end
 
