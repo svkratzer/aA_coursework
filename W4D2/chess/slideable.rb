@@ -1,5 +1,23 @@
 module Slideable
 
+  # [delta_row, delta_col]
+  # pos [3, 3], left_move [0, -1]
+  # pos[0] += left_move[0], pos[1] += left_move[1]
+
+  HORIZONTAL_STEPS = [
+  [0, -1], # left
+  [0, 1], # right
+  [-1, 0], # up
+  [1, 0]  # down
+].freeze
+
+ VERTICAL_STEPS = [
+  [-1, -1], #up + left
+  [-1, 1], #up + right
+  [1, -1], #down + left
+  [1, 1]  #down + right
+].freeze 
+
   def slide_move(start_pos, end_pos)
     start_row, start_col = start_pos
     end_row, end_col = end_pos
@@ -19,6 +37,8 @@ module Slideable
   end  
 
 end
+
+
 
 =begin
 
