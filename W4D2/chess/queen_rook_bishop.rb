@@ -4,6 +4,7 @@ require_relative  "slideable"
 class Rook < Piece
   include Slideable
 
+
 end
 
 class Bishop < Piece
@@ -16,3 +17,5 @@ class Queen < Piece
   include Slideable
   
 end
+
+rook = Rook.new(:B)

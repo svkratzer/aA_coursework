@@ -1,5 +1,6 @@
 require_relative "piece"
 require_relative "null_piece"
+require "colorize"
 
 class Board
     attr_reader :grid
@@ -40,11 +41,14 @@ class Board
 
     private
 
+
+  # value == 0 ? " " : value.to_s.colorize(color)
+
     # Fills the grid with Pieces
     def fill_grid
       # Fills the first players side with Pieces
       self.grid[0..1].each_with_index do |row, i_1|
-        row.each_with_index { |pos, i_2| row[i_2] = Piece.new(:W, self, [i_1, i_2])}
+        row.each_with_index { |pos, i_2| row[i_2] = Piece.new("W".green, self, [i_1, i_2])}
       end
       #Fills the middle with instances of NullPiece
       null = NullPiece.instance
@@ -53,7 +57,7 @@ class Board
       end
       #Fills the second players side with Pieces
       self.grid[6..7].each_with_index do |row, i_1|
-        row.each_with_index { |pos, i_2| row[i_2] = Piece.new(:B, self, [i_1, i_2])}
+        row.each_with_index { |pos, i_2| row[i_2] = Piece.new("B".magenta, self, [i_1, i_2])}
       end           
     end    
 
