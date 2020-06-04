@@ -1,8 +1,6 @@
-require_relative "slideable"
 require_relative "board"
 
 class Piece
-    include Slideable
     
     attr_reader :color, :board
     def initialize(color, board, pos)
@@ -13,7 +11,7 @@ class Piece
 
     # Overwrites what we see when printing Pieces
     def inspect
-        self.color
+        self.symbol
     end
         
 end    

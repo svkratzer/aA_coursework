@@ -42,22 +42,29 @@ class Board
     private
 
 
-  # value == 0 ? " " : value.to_s.colorize(color)
-
     # Fills the grid with Pieces
     def fill_grid
       # Fills the first players side with Pieces
+
+      # Fill the white back line
+      # self[[0,0]], self[[0,7]] = Rook.new(self, [0,0], :W), Rook.new(self, [0,7], :W)
+      # self[[0,1]], self[[0,6]] = Knight.new(self, [0,1], :W), Knight.new(self, [0,6], :W)
+      # self[[0,2]], self[[0,5]] = Bishop.new(self, [0,2], :W), Bishop.new(self, [0,5], :W)
+      # self[[0,2]] = Queen.new(self, [0,3], :W)
+      # self[[0,4]] = King.new(self, [0,4], :W)
+
       self.grid[0..1].each_with_index do |row, i_1|
-        row.each_with_index { |pos, i_2| row[i_2] = Piece.new("W".green, self, [i_1, i_2])}
+        row.each_with_index { |pos, i_2| row[i_2] = Piece.new(:W, self, [i_1, i_2])}
       end
+
       #Fills the middle with instances of NullPiece
       null = NullPiece.instance
       self.grid[2..5].each_with_index do |row, i_1|
         row.each_with_index { |pos, i_2| row[i_2] = null}
       end
-      #Fills the second players side with Pieces
+      
       self.grid[6..7].each_with_index do |row, i_1|
-        row.each_with_index { |pos, i_2| row[i_2] = Piece.new("B".magenta, self, [i_1, i_2])}
+        row.each_with_index { |pos, i_2| row[i_2] = Piece.new(:B, self, [i_1, i_2])}
       end           
     end    
 
@@ -66,14 +73,16 @@ end
 
 if __FILE__ == $PROGRAM_NAME
 
-board = Board.new
-board.grid.each { |row| p row }
-puts 
-board.move_piece([1,1], [4,5])
-board.grid.each { |row| p row }
-puts
 
+# board.grid.each { |row| p row }
+# puts 
+# board.move_piece([1,1], [4,5])
+# board.grid.each { |row| p row }
+# puts
 
+#r = Rook.new(self, [0,0], :W)
+
+#p = Piece.new(, self, [0,0], :W)
 
 # Sliding pieces (Bishop/Rook/Queen)
 # Stepping pieces (Knight/King)
