@@ -22,7 +22,7 @@ describe Array do
       expect { array.my_uniq }.to_not raise_error
     end
     it "should return a new array" do
-      expect(array.two_sum).to eq([[0,4], [2,3]])
+      expect(array.two_sum).to be_a(Array)
     end
     it "should add two elements and check sum equals zero" do
       new_arr = array.two_sum
@@ -84,8 +84,8 @@ describe "#stock_picker" do
     it "should raise an argument error if not all elements in input array are floats" do
       array1 = [1,2,3,4,5]
       array2 = %w(dog cat)
-      expect { array1(stock_picker) }.to raise_error(ArgumentError)
-      expect { array2(stock_picker) }.to raise_error(ArgumentError)
+      expect { stock_picker(array1) }.to raise_error(ArgumentError)
+      expect { stock_picker(array2) }.to raise_error(ArgumentError)
     end
     it "should return an array" do
       best_days = stock_picker(stock_prices)
