@@ -23,8 +23,16 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
+
 body {
   line-height: 1.5;
+  font-family: Arial, sans-serif;
+}
+h1 {
+  font-size: 38px;
+}
+h2 {
+  font-size: 32px;
 }
 ol, ul {
   list-style: none;
@@ -40,4 +48,8 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+.ingredients-list {
+  list-style: square inside;
 }
