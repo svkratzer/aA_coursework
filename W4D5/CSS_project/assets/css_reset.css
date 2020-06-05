@@ -58,3 +58,7 @@ form input[type="submit"]:hover {
   -webkit-transition: all 500ms ease;
   -webkit-filter: brightness(80%);
 }
+
+li:nth-of-type(2n) {
+  background-color: lightgray;
+}
