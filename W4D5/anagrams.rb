@@ -69,6 +69,8 @@ def fourth_anagram?(str1, str2)
   hash1 == hash2
 end
 
+# --------------- BONUS --------------- 
+
 def bonus_anagram?(str1, str2)
   hash = Hash.new(0)
   str1.each_char { |char| hash[char] += 1 }
