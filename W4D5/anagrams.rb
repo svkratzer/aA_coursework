@@ -1,4 +1,4 @@
-def generate_anagram(str)
+def generate_anagram(str) # ANAGRAM GENERATOR
   str.chars.shuffle.join
 end
 
@@ -59,47 +59,60 @@ def quick_sort_str(str)
   quick_sort_str(left.join)+ pivot + quick_sort_str(right.join)
 end
 
+# --------------- FOURTH --------------- 
+
+def fourth_anagram?(str1, str2)
+  hash1 = Hash.new(0)
+  hash2 = Hash.new(0)
+  str1.each_char { |char| hash1[char] += 1 }
+  str2.each_char { |char| hash2[char] += 1 }
+  hash1 == hash2
+end
+
+def bonus_anagram?(str1, str2)
+  hash = Hash.new(0)
+  str1.each_char { |char| hash[char] += 1 }
+  str2.each_char { |char| hash[char] -= 1 }
+  hash.all? { |k,v| v.zero? }
+end
 
 
 if __FILE__ == $PROGRAM_NAME
 
-# p generate_anagram("hello")
-# p generate_anagram("loquacious")
-# p generate_anagram("supercalifragilisticexpialidocious")
+  test_1 = ["hello", "llohe"]
+  test_2 = ["loquacious", "cuoqoulsai"]
+  test_3 = ["supercalifragilisticexpialidocious", "geosiupitiecfsisildalaxpuiorclcrai"]
+  test_4 = ["ion", "eon"]
+  test_5 = ["hello", "goodbye"]
 
-test_1 = ["hello", "llohe"]
-test_2 = ["loquacious", "cuoqoulsai"]
-test_3 = ["supercalifragilisticexpialidocious", "geosiupitiecfsisildalaxpuiorclcrai"]
-test_4 = ["ion", "eon"]
-test_5 = ["hello", "goodbye"]
+  # p first_anagram?(*test_1)
+  # p first_anagram?(*test_2)
+  # p first_anagram?(*test_3)
+  # p first_anagram?(*test_4)
+  # p first_anagram?(*test_5)
+  # puts
+  # p second_anagram?(*test_1)
+  # p second_anagram?(*test_2)
+  # p second_anagram?(*test_3)
+  # p second_anagram?(*test_4)
+  # p second_anagram?(*test_5)
+  # puts
+  # p third_anagram?(*test_1)
+  # p third_anagram?(*test_2)
+  # p third_anagram?(*test_3)
+  # p third_anagram?(*test_4)
+  # p third_anagram?(*test_5)
+  # puts
+  # p fourth_anagram?(*test_1)
+  # p fourth_anagram?(*test_2)
+  # p fourth_anagram?(*test_3)
+  # p fourth_anagram?(*test_4)
+  # p fourth_anagram?(*test_5)
 
-# p first_anagram?(*test_1)
-# p first_anagram?(*test_2)
-# p first_anagram?(*test_3)
-# p first_anagram?(*test_4)
-# p first_anagram?(*test_5)
-# puts
-# p second_anagram?(*test_1)
-# p second_anagram?(*test_2)
-# p second_anagram?(*test_3)
-# p second_anagram?(*test_4)
-# p second_anagram?(*test_5)
-# puts
-# p third_anagram?(*test_1)
-# p third_anagram?(*test_2)
-# p third_anagram?(*test_3)
-# p third_anagram?(*test_4)
-# p third_anagram?(*test_5)
-# puts
-# p d_anagram?(*test_1)
-# p d_anagram?(*test_2)
-# p d_anagram?(*test_3)
-# p d_anagram?(*test_4)
-# p d_anagram?(*test_5)
-# puts
-# p quick_sort_str("hello")
-# p quick_sort_str("majesty")
-# p quick_sort_str("tabernacle")
-# p quick_sort_str("acdcadbbacdbacdbacda")
+  p bonus_anagram?(*test_1)
+  p bonus_anagram?(*test_2)
+  p bonus_anagram?(*test_3)
+  p bonus_anagram?(*test_4)
+  p bonus_anagram?(*test_5)
 
 end
