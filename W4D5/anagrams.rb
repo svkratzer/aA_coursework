@@ -2,10 +2,9 @@ def generate_anagram(str)
   str.chars.shuffle.join
 end
 
-
-
 def first_anagram?(str1, str2)
-  permutations = str_permutations(str)
+  permutations = str_permutations(str1)
+  permutations.include?(str2)
 end
 
 def str_permutations(str)
@@ -17,12 +16,27 @@ def str_permutations(str)
   total_perms = []
 
   perms.each do |perm|
-    (0...perm.length).each do |i|
-      total_perms << perm[0...i] + first + perm[i..-1]
+    (0..perm.length).each do |i|
+      total_perms << (perm[0...i] + first + perm[i..-1])
     end
   end
   total_perms
 end
+
+def second_anagram?(str1, str2)
+  str1.each_char do |char|
+    idx = str2.index(char)
+    if idx.nil? 
+      return false
+    else
+      str2[idx] = ""
+    end
+  end
+  str2.empty?
+end
+
+
+
 
 if __FILE__ == $PROGRAM_NAME
 
@@ -42,27 +56,22 @@ test_5 = ["hello", "goodbye"]
 # p first_anagram?(*test_4)
 # p first_anagram?(*test_5)
 # puts
-# p b_anagram?(*test_1)
-# p b_anagram?(*test_2)
-# p b_anagram?(*test_3)
-# p b_anagram?(*test_4)
-# p b_anagram?(*test_5)
+# p second_anagram?(*test_1)
+# p second_anagram?(*test_2)
+# p second_anagram?(*test_3)
+# p second_anagram?(*test_4)
+# p second_anagram?(*test_5)
 # puts
-# p c_anagram?(*test_1)
-# p c_anagram?(*test_2)
-# p c_anagram?(*test_3)
-# p c_anagram?(*test_4)
-# p c_anagram?(*test_5)
+# p third_anagram?(*test_1)
+# p third_anagram?(*test_2)
+# p third_anagram?(*test_3)
+# p third_anagram?(*test_4)
+# p third_anagram?(*test_5)
 # puts
 # p d_anagram?(*test_1)
 # p d_anagram?(*test_2)
 # p d_anagram?(*test_3)
 # p d_anagram?(*test_4)
 # p d_anagram?(*test_5)
-
-p str_permutations("hello")
-p str_permutations("he")
-p str_permutations("h")
-p str_permutations("")
 
 end
