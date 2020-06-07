@@ -54,7 +54,7 @@ def good_two_sum?(arr, target)
 end
 
 # Time Complexity:  O(n)
-# Space Complexity: O(1)
+# Space Complexity: O(n)
 
 if __FILE__ == $PROGRAM_NAME
 
