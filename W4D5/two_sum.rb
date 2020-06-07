@@ -26,6 +26,9 @@ def okay_two_sum?(arr, target_sum)
   false
 end
 
+# Time Complexity:  O(nlog(n))
+# Space Complexity: O(n)
+
 def b_search(arr, target)
   return nil if arr.empty?
   mid = arr.length / 2
@@ -42,9 +45,16 @@ end
 
 # ---------------- HASH MAP ----------------
 
-def good_two_sum(arr, target)
-
+def good_two_sum?(arr, target)
+  hash = Hash.new
+  arr.each do |ele|
+    hash.include?(ele) ? (return true) : hash[target - ele] = nil
+  end
+  false
 end
+
+# Time Complexity:  O(n)
+# Space Complexity: O(1)
 
 if __FILE__ == $PROGRAM_NAME
 
@@ -58,7 +68,5 @@ p okay_two_sum?(arr, 10) # => false
 puts
 p good_two_sum?(arr, 6) # => true
 p good_two_sum?(arr, 10) # => false
-puts
-p b_search(arr.sort, 7)
 
 end
