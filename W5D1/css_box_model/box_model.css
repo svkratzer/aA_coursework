@@ -12,3 +12,35 @@ div {
 p {
   background-color: #7fdbff;
 }
+
+#third-div > p {
+    min-height: 10px;
+    min-width: 300px;
+}
+
+img {
+    background: blanchedalmond;
+}
+
+.image-1-container {
+    width: 200px;
+    height: 600px;
+    background: blanchedalmond;
+}
+
+.image-2-container {min-height: 100px;min-width: 100px;max-width: fit-content;background-color: blanchedalmond;}
+
+div {height: 200px;width: 200px;border: 5px solid black;padding: 50px 50px 50px 50px;}
+
+#first-div {
+  background-color: #39cccc;
+}
+
+#second-div {
+  background-color: #ff4136;
+  background: border-box;
+}
+
+p {
+  background-color: #7fdbff;
+}
