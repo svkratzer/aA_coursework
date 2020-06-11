@@ -1,0 +1,35 @@
+html,
+body,
+head, 
+title, 
+header, 
+nav, 
+ul, 
+li, 
+img, 
+aside, 
+section, 
+figure, 
+h2, 
+p, 
+ol, 
+label, 
+input, 
+options, 
+select, 
+form, 
+footer {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  list-style-type: none;
+}
+
+body {
+  line-height: 1.5;
+}
+
+img { 
+  width: inherit;
+}
