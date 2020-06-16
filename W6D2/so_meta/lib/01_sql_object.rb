@@ -4,19 +4,23 @@ require 'active_support/inflector'
 # of this project. It was only a warm up.
 
 class SQLObject
+  
+  @table_name = nil
+
   def self.columns
     # ...
+
   end
 
   def self.finalize!
   end
 
-  def self.table_name=(table_name)
-    # ...
+  def self.table_name=(table_name=nil)
+    @table_name = (table_name.nil? ? self.to_s.downcase + 's' : table_name)
   end
 
   def self.table_name
-    # ...
+    @table_name.nil? ? self.to_s.downcase + 's' : @table_name
   end
 
   def self.all

@@ -3,10 +3,10 @@ class AttrAccessorObject
   
     names.each do |name|
       define_method(name.to_sym) {
-        self.instance_variable_get(name.to_sym)
+        instance_variable_get("@#{name}")
       }
       define_method((name.to_s + '=').to_sym) {
-        self.instance_variable_set(name.to_sym)
+       |new_value| instance_variable_set("@#{name}", new_value)
       }
     end
 
