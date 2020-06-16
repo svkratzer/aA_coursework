@@ -8,8 +8,13 @@ class SQLObject
   @table_name = nil
 
   def self.columns
-    # ...
-
+    query = DBConnection.execute2(<<-SQL)
+      SELECT
+        *
+      FROM 
+        #{self.table_name}
+    SQL
+    query.first.map(&:to_sym)
   end
 
   def self.finalize!
@@ -59,3 +64,4 @@ class SQLObject
     # ...
   end
 end
+
