@@ -6,18 +6,25 @@ require 'active_support/inflector'
 class SQLObject
   
   @table_name = nil
+  @columns = nil
 
   def self.columns
-    query = DBConnection.execute2(<<-SQL)
-      SELECT
-        *
-      FROM 
-        #{self.table_name}
-    SQL
-    query.first.map(&:to_sym)
+    if @columns.nil?
+      query = DBConnection.execute2(<<-SQL)
+        SELECT
+          *
+        FROM 
+          #{self.table_name}
+      SQL
+      @columns = query.first.map(&:to_sym)
+      return @columns
+    else
+      return @columns
+    end
   end
 
   def self.finalize!
+    
   end
 
   def self.table_name=(table_name=nil)
@@ -45,7 +52,7 @@ class SQLObject
   end
 
   def attributes
-    # ...
+    @attributes ||= {}
   end
 
   def attribute_values
