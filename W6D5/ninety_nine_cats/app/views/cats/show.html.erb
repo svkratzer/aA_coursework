@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showstyle.css">
+</head>
+
+<table>
+
+  <thead>
+     <th colspan="4">Cat Info</th>
+  </thead>
+
+  <tbody>  
+    <tr>
+        <td>birth date</td>
+        <td>color</td>
+        <td>name</td>
+        <td>sex<td>
+    </tr>
+    <tr>
+        <td><%= @cat.birth_date %></td>
+        <td><%= @cat.color %></td>
+        <td><%= @cat.name %></td>
+        <td><%= @cat.sex %></td>
+    </tr>
+  </tbody>
+    
+</table>
+    <p> <%= @cat.description %> <p>
+
