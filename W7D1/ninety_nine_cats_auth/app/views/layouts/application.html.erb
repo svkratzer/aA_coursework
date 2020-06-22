@@ -9,6 +9,19 @@
   </head>
 
   <body>
+  <% if !@user.nil? && @signup == false %>
+    <h3>You are signed in as <%= @user.username %></h3>
+  <% elsif @signup == false %>
+    <h3>You are not signed in.</h3>
+    <a href="<%=new_session_url %>">Login</a>
+    <a href="<%=new_user_url %>">Sign-up</a>
+  <% elsif @signup == true %>
+    <h3>Already have an account? <a href="<%=new_session_url %>">Login here.</a></h3> 
+  <% elsif @login == true %>
+    <h3>Don't have an account? <a href="<%=new_session_url %>">Sign up here.</a></h3> 
+  <% end %>
+  
+  
     <%= yield %>
   </body>
 </html>

@@ -1,4 +1,5 @@
 class CatRentalRequestsController < ApplicationController
+  before_action :validate_cat_owner, only: [:approve, :deny]
   
   def approve
     current_cat_rental_request.approve!
@@ -38,4 +39,12 @@ class CatRentalRequestsController < ApplicationController
   def cat_rental_request_params
     params.require(:cat_rental_request).permit(:cat_id, :end_date, :start_date, :status)
   end
+
+  def validate_cat_owner
+      cat_ids = Cat
+      .where("cats.owner_id = #{current_user.id}")
+      .pluck(:id)
+      cat_ids.include?(params[:cat_rental_request][:cat_id])
+  end
+
 end
