@@ -19,7 +19,13 @@ class User < ApplicationRecord
         foreign_key: :user_id,
         class_name: :Cat,
         dependent: :destroy
-
+        
+    has_many :cat_rental_requests,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :CatRentalRequest,
+        dependent: :destroy
+        
     def ensure_session_token
         self.session_token ||= generate_session_token
     end
