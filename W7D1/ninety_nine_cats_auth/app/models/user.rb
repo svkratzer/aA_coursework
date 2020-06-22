@@ -12,7 +12,11 @@ class User < ApplicationRecord
     validates :password_digest, presence: true
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: {minimum: 6, allow_nil: true}
+    after_intitialize :ensure_session_token
 
+    def ensure_session_token
+        self.session_token ||= generate_session_token
+    end
 
     attr_reader :password
 
