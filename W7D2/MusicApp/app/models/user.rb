@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  # has_secure_password
   validates :email, presence: true
   validates :password_digest, presence: true
   validates :session_token, presence: true, uniqueness: true
@@ -37,7 +38,11 @@ class User < ApplicationRecord
   def password=(password)
     # Sets the password_digest to a hashed version of the plaintext
     # password that the user initially supplies in their HTTP request.
-    self.password_digest = BCrypt::Password.create(password)
+
+    # The password is initially stored as an instance variable so it can be validated
+    # using attr_reader and validates :password above. 
+    @password = password
+    self.password_digest = BCrypt::Password.create(@password)
   end
 
   def is_password?(password)
