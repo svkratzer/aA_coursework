@@ -35,3 +35,7 @@ console.log(battleship.__proto__ === Ship.prototype);
 
 // Object.create version
 
+Function.prototype.inherits = function (parent) {
+  this.prototype = Object.create(parent.prototype);
+  this.prototype.constructor = this;
+}
