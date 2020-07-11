@@ -1,0 +1,113 @@
+h1 {
+  display: block;
+  text-align: center;
+  width: 800px;
+  background-color: blueviolet;
+  font-family: 'Comic Sans MS';
+  
+}
+
+marquee {
+    position: absolute;
+    z-index: -100;
+}
+
+.spacer {
+  height: 100px;
+}
+
+#sick-gifs {
+  display: flex;
+  justify-content: space-between;
+  /* flex-direction: column; */
+}
+
+.left-gifs, .right-gifs {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    max-width: 250px;
+    height: 1500px;
+}
+
+
+.left-gifs {
+    /* justify-content: left; */
+    align-items: left;
+}
+
+.right-gifs {
+  /* justify-content: right; */
+  align-items: right;
+}
+
+marquee {
+  font-family: "Comic Sans MS";
+  font-size: 18px;
+}
+
+.blinking{
+    animation:blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+    0%{     color: red;    }
+    49%{    color:limegreen; }
+    /* 60%{    color: transparent; }
+    99%{    color:transparent;  } */
+    100%{   color: red;    }
+}
+
+html {
+  width: 100%;
+  height: 100px;
+  border: 1px solid grey;
+  animation: animate 0.25s infinite;
+}
+
+div img {
+  border: 3px cornflowerblue dotted;
+}
+
+@keyframes animate{
+
+  0%{ 
+    cursor: url("http://jantimon.nl/running_man/running_man_1.png"), auto;
+  }
+  20%{ 
+    cursor: url("http://jantimon.nl/running_man/running_man_2.png"), auto;
+  }
+  40%{ 
+    cursor: url("http://jantimon.nl/running_man/running_man_3.png"), auto;
+  }
+  60%{ 
+    cursor: url("http://jantimon.nl/running_man/running_man_4.png"), auto;
+  }
+  80%{ 
+    cursor: url("http://jantimon.nl/running_man/running_man_5.png"), auto;
+  }
+  100%{ 
+    cursor: url("http://jantimon.nl/running_man/running_man_1.png"), auto;
+  }
+
+}
+
+h3 {
+  font-family: "Comic Sans MS";
+  font-size: 50px;
+  color: wheat;
+}
+h5 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 30px;
+  color: chocolate;
+}
+
+section {
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+  color: chartreuse;
+}
+
+section p {
+  color: blanchedalmond;
+}
