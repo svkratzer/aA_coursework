@@ -1,0 +1,88 @@
+
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+marquee {
+  color: brown;
+  font-size: xx-large;
+  font-family: "Comic Sans MS";
+}
+
+#rtl {
+  direction: rtl;
+}
+
+#ltr {
+  direction: ltr;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 330px;
+    height: 330px;
+    border: 5px solid green;
+    margin-left: 60px;
+    margin-top: 60px;
+}
+
+li {
+  border: 5px solid green;
+  background-color: red;
+  display: block;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+}
+
+li:hover {
+  background-color: yellow;
+}
+
+.x, .o {
+  background-color: navy;
+}
+
+.x {
+  
+}
+
+.o {
+
+}
+
+.x:after, .o:after {
+  font-size: 60px;
+  font-family: "Comic Sans MS";
+  color: chartreuse;
+}
+
+.x:after {
+  content: 'X';
+}
+
+.o:after  {
+  content: 'O';
+}
+
+.x:hover, .o:hover {
+  background-color: navy;
+}
+
+figcaption {
+  font-size: 36px;
+  color: blueviolet;
+  display: block;
+  border-radius: 75%;
+  background-color: orange;
+  border: 5px solid cyan;
+  padding-top: 10px;
+  width: 330px;
+  height: 100px;
+  text-align: center;
+
+}
+
