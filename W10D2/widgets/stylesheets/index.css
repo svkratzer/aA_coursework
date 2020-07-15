@@ -1,0 +1,32 @@
+
+.clock {
+    font-family: 'Abril Fatface';
+    font-size: 30px;
+    border: black solid 5px;
+    padding: 10px 20px;
+    margin: auto;
+    width: 600px;
+    background: rgb(210,212,221);
+    /* background: radial-gradient(circle, rgba(210,212,221,1) 45%, rgba(148,148,145,1) 100%); */
+    background: linear-gradient(90deg, rgba(219,221,226,1) 21%, rgba(123,134,140,1) 41%, rgba(219,221,226,1) 100%);
+}
+
+.clock p {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px;
+}
+
+.clock-header {
+  font-family: 'Abril Fatface';
+  font-size: 36px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+body {
+  display: flex;
+  justify-content: space-around;
+}
