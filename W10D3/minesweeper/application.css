@@ -1,0 +1,67 @@
+#main{
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.game{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+h1 {
+   font-size: 36px;
+   font-weight: 900;
+}
+
+.instruction{
+    margin: 0;
+}
+
+.instruction p{
+    text-align: center;
+    font-weight: 200;
+}
+
+.instruction p:last-child{
+    margin-bottom: 20px;
+}
+
+.instruction p:first-child{
+    margin-top: 10px;
+}
+
+.grid{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.tile div{
+    width: 30px;
+    height: 30px;  
+    background-color: lightgray;
+}
+
+.row{
+    display: flex;
+}
+
+.explored{
+    border: 2px outset;
+    border-style: inset;
+    
+}
+
+.raw-tile{
+     border: 2px outset;
+     
+}
+
+.end{
+    background-
+}
+
