@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import selectAllPokemon from '../../reducers/selectors'
+import {selectAllPokemon} from '../../reducers/selectors'
 import PokemonIndex from './pokemon_index' 
 
 const msp = (state) => {
